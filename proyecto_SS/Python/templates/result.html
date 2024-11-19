@@ -1,0 +1,73 @@
+<!--# Autor: Jonathan Hernández
+# Fecha: 14 noviembre 2024
+# GitHub: https://github.com/Jona163 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animación de entrada */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .bg-gradient-button {
+            background: linear-gradient(to right, #3b82f6, #0284c7);
+        }
+
+        body {
+            background: linear-gradient(to right, #1e3a8a, #3b82f6);
+            color: white;
+        }
+
+        footer {
+            font-size: 0.875rem;
+        }
+
+        .image-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <header class="text-center py-10">
+        <h1 class="text-4xl font-semibold">Resultados de la Encuesta</h1>
+    </header>
+
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="image-container max-w-lg w-full text-center">
+            <img src="{{ plot_url }}" alt="Gráfica de araña" class="rounded-lg shadow-xl mb-6">
+        </div>
+    </div>
+
+    <footer class="text-center py-6 text-sm fade-in">
+        <p>© 2024 TESJi</p>
+    </footer>
+
+</body>
+</html>

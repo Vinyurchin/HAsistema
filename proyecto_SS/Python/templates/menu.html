@@ -1,0 +1,65 @@
+<!--# Autor: Jonathan Hernández
+# Fecha: 14 noviembre 2024
+# GitHub: https://github.com/Jona163 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animaciones y transiciones */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .bg-gradient-button {
+            background: linear-gradient(to right, #3b82f6, #0284c7);
+        }
+
+        body {
+            background: linear-gradient(to right, #1e3a8a, #3b82f6);
+            color: white;
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <header class="text-center py-10">
+        <h1 class="text-4xl font-semibold">Bienvenido</h1>
+    </header>
+
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white text-gray-900 rounded-xl shadow-2xl p-8 max-w-md w-full">
+            <div class="space-y-6">
+                <a href="{{ url_for('survey') }}" class="text-white bg-gradient-button button-hover text-lg font-medium rounded-lg w-full px-6 py-3 text-center transition-all ease-in-out">Iniciar Encuesta</a>
+                <a href="{{ url_for('results') }}" class="text-white bg-gradient-button button-hover text-lg font-medium rounded-lg w-full px-6 py-3 text-center transition-all ease-in-out">Ver Gráfica</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-6 text-sm fade-in">
+        <p>© 2024 TESJi</p>
+    </footer>
+
+</body>
+</html>

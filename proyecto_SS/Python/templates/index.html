@@ -1,0 +1,76 @@
+<!--# Autor: Jonathan Hernández
+# Fecha: 14 noviembre 2024
+# GitHub: https://github.com/Jona163 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animaciones y transiciones */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .bg-gradient-button {
+            background: linear-gradient(to right, #f97316, #f59e0b);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+
+    <header class="text-center py-10 fade-in">
+        <nav class="space-x-"></nav>
+    </header>
+
+    <div class="flex justify-center items-center min-h-screen fade-in">
+        <div class="bg-white text-gray-900 rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-all hover:scale-105">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-blue-900">Iniciar Sesión</h2>
+            <form method="POST" action="{{ url_for('login') }}" class="space-y-6">
+                <div class="mb-6">
+                    <label for="email" class="block mb-2 text-lg font-medium text-gray-900">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-3 transition-all duration-300" placeholder="name@example.com" required />
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block mb-2 text-lg font-medium text-gray-900">Contraseña</label>
+                    <input type="password" id="password" name="contrasena" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-3 transition-all duration-300" required />
+                </div>
+                <div class="flex items-start mb-6">
+                    <div class="flex items-center h-5">
+                        <input id="remember" type="checkbox" value="" class="w-5 h-5 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" />
+                    </div>
+                    <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Recordar</label>
+                </div>
+                <button type="submit" class="text-white bg-gradient-button button-hover text-sm w-full px-5 py-3 text-center rounded-lg font-medium transition-all ease-in-out">Iniciar Sesión</button>
+                <div class="text-center mt-4">
+                    <a href="registrar.html" class="text-blue-300 hover:text-blue-500 transition duration-200">¿No tienes cuenta? Regístrate</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="text-center py-8 text-sm fade-in">
+        <p>© 2024 TESJi | Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

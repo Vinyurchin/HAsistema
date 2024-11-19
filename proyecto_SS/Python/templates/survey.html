@@ -1,0 +1,150 @@
+<!--# Autor: Jonathan Hernández
+# Fecha: 14 noviembre 2024
+# GitHub: https://github.com/Jona163 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+    <script>
+        let currentQuestionIndex = 0;
+
+        function showQuestion(index) {
+            document.querySelectorAll('.question').forEach((element, i) => {
+                element.style.display = i === index ? 'block' : 'none';
+            });
+            updateProgressBar();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < document.querySelectorAll('.question').length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        function updateProgressBar() {
+            const totalQuestions = document.querySelectorAll('.question').length;
+            const progress = (currentQuestionIndex / (totalQuestions - 1)) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-text').textContent = `Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showQuestion(currentQuestionIndex);
+        });
+    </script>
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3a8a, #3b82f6);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .question {
+            display: none;
+            text-align: center;
+        }
+
+        button {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3b82f6;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #3b82f6;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        input[type="submit"] {
+            background-color: #f97316;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #fb923c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Encuesta</h1>
+    </header>
+
+    <form method="POST" action="/survey">
+        {% for pregunta in preguntas %}
+            <div class="question">
+                <h2>{{ pregunta.texto }}</h2>
+                {% for opcion in opciones %}
+                    <label>
+                        <input type="radio" name="pregunta_{{ pregunta.id }}" value="{{ opcion.id }}">
+                        {{ opcion.texto }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="progress-text" class="progress-text">Pregunta 1 de {{ preguntas|length }}</div>
+
+        <div class="buttons" style="text-align: center; margin-top: 20px;">
+            <button type="button" onclick="prevQuestion()">Anterior</button>
+            <button type="button" onclick="nextQuestion()">Siguiente</button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <input type="submit" value="Enviar">
+        </div>
+    </form>    
+
+</body>
+</html>
